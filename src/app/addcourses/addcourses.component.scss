@@ -1,0 +1,12 @@
+.container{
+    height:100vh;
+    width:100vw;
+}
+.minicontainer{
+    height:90vh;
+    width:90vh;
+    background-color: aliceblue;
+    margin:10em auto;
+    display:flex;
+    flex-direction:column;
+}

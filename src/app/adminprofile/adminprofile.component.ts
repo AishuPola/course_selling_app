@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-adminprofile',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './adminprofile.component.html',
-  styleUrl: './adminprofile.component.scss'
+  styleUrl: './adminprofile.component.scss',
 })
-export class AdminprofileComponent {
-
-}
+export class AdminprofileComponent {}
