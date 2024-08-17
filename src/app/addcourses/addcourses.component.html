@@ -1,8 +1,54 @@
-<div class="container">
+<!-- <div class="container">
   <div class="minicontainer">
     <input type="text" [(ngModel)]="coursename" placeholder="coursename" />
     <input type="text" placeholder="description" />
     <input type="text" placeholder="coursename" />
     <input type="text" placeholder="price" />
+    <div><button>Create Course</button></div>
   </div>
-</div>
+</div> -->
+<form
+  [formGroup]="addCourseForm"
+  (ngSubmit)="addCourse()"
+  class="add-addCourse-form"
+>
+  <mat-form-field>
+    <mat-label>courseName</mat-label>
+    <input matInput placeholder="java ⭐" formControlName="coursename" />
+
+    @if(coursename?.touched && coursename?.hasError('required') ){
+    <mat-error>coursename is <strong>required</strong></mat-error>
+    } @if(coursename?.touched && coursename?.hasError('minlength') ){
+    <mat-error>Please provide full addCourse name 😁</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>imageUrl</mat-label>
+    <input matInput placeholder="http://" formControlName="imageurl" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Price</mat-label>
+    <input type="text" matInput placeholder="8" formControlName="price" />
+
+    @if(price?.touched && price?.hasError('required') ){
+    <mat-error>price is <strong>required</strong></mat-error>
+    } @if(price?.touched && price?.hasError('min') ){
+    <mat-error>price is <strong>too low 🥲</strong></mat-error>
+    } @if(price?.touched && price?.hasError('max') ){
+    <mat-error>Rating is too high 😓</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>description</mat-label>
+    <input
+      matInput
+      placeholder="Your awesome summary 🎊"
+      formControlName="description"
+    />
+  </mat-form-field>
+
+  <button mat-raised-button type="submit">Add Course</button>
+</form>

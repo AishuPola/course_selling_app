@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-adminprofile',
@@ -8,4 +8,9 @@ import { RouterLink } from '@angular/router';
   templateUrl: './adminprofile.component.html',
   styleUrl: './adminprofile.component.scss',
 })
-export class AdminprofileComponent {}
+export class AdminprofileComponent {
+  constructor(private router: Router) {}
+  addcourses() {
+    this.router.navigate(['addcourses']);
+  }
+}

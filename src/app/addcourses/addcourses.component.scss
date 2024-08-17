@@ -1,12 +1,20 @@
-.container{
-    height:100vh;
-    width:100vw;
-}
-.minicontainer{
-    height:90vh;
-    width:90vh;
-    background-color: aliceblue;
-    margin:10em auto;
-    display:flex;
-    flex-direction:column;
-}
+// .container{
+//     height:100vh;
+//     width:100vw;
+// }
+// .minicontainer{
+//     height:90vh;
+//     width:90vh;
+//     background-color: aliceblue;
+//     margin:10em auto;
+//     display:flex;
+//     flex-direction:column;
+// }
+.add-addCourse-form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  
+    max-width: 400px;
+    margin: 16px auto;
+  }

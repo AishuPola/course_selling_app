@@ -1,0 +1,29 @@
+<div
+  style="
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+  "
+>
+  @for(x of courseData;track x){
+  <div
+    style="
+      height: 70vh;
+      width: 30vw;
+      border: 1px solid black;
+      margin: 1em;
+      overflow-x: hidden;
+    "
+  >
+    <div>
+      <img src="{{ x.imageurl }}" width="100%" height="340px" />
+      <h1>{{ x.coursename }}</h1>
+      <div>{{ x.description }}</div>
+      <div>${{ x.price }}</div>
+    </div>
+  </div>
+  }
+</div>

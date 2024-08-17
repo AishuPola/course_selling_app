@@ -3,6 +3,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AdminprofileComponent } from './adminprofile/adminprofile.component';
 import { AddcoursesComponent } from './addcourses/addcourses.component';
+import { UsersignupComponent } from './usersignup/usersignup.component';
+import { CoursesComponent } from './courses/courses.component';
 
 export const routes: Routes = [
   {
@@ -14,11 +16,19 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'login/adminprofile',
+    path: 'adminprofile',
     component: AdminprofileComponent,
   },
   {
-    path: 'login/adminprofile/addcourses',
+    path: 'addcourses',
     component: AddcoursesComponent,
+  },
+  {
+    path: 'user/signup',
+    component: UsersignupComponent,
+  },
+  {
+    path: 'viewCourses',
+    component: CoursesComponent,
   },
 ];
