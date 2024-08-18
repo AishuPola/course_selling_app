@@ -25,19 +25,20 @@ import { UserService } from '../user.service';
 })
 export class UsersignupComponent {
   signupForm!: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router
   ) {
     this.signupForm = this.fb.group({
-      Adminname: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
       password: '',
     });
   }
 
-  get Adminname() {
-    return this.signupForm.get('Adminname');
+  get username() {
+    return this.signupForm.get('username');
   }
 
   signup() {
