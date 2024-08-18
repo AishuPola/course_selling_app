@@ -1,1 +1,22 @@
-<p>coursedetails works!</p>
+<div class="course-container">
+  <iframe
+    width="718"
+    height="449"
+    src="https://www.youtube.com/embed/A74TOX803D0"
+    title="Java Programming for Beginners – Full Course"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+
+  <div class="course-content">
+    <div class="course-spec">
+      <h2 class="course-title">
+        {{ course.coursename }}
+      </h2>
+      <p class="course-rating">${{ course.price }}</p>
+    </div>
+    <p class="course-summary">{{ course.content }}</p>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<div
+<!-- <div
   style="
     height: 100vh;
     width: 100vw;
@@ -7,9 +7,10 @@
     flex-wrap: wrap;
     overflow-x: hidden;
   "
->
+> -->
+<div class="course-list-container">
   @for(x of courseData;track x) {
-  <mat-card class="container">
+  <!-- <mat-card class="container">
     <div>
       <img src="{{ x.imageurl }}" width="100%" height="340px" />
       <div class="course-and-info">
@@ -26,6 +27,62 @@
       <div>{{ x.description }}</div>
       <div>${{ x.price }}</div>
     </div>
+  </mat-card> -->
+
+  <mat-card class="course-container">
+    <img src="{{ x.imageurl }}" alt="{{ x.name }}" class="course-poster" />
+    <mat-card-content>
+      <div class="course-spec">
+        <h2 class="course-title">
+          {{ x.name }}
+          <button
+            mat-icon-button
+            aria-label="Toggle summary"
+            (click)="toggleSummary()"
+          >
+            <mat-icon>{{
+              show ? "keyboard_arrow_up" : "keyboard_arrow_down"
+            }}</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            aria-label="Details of course"
+            routerLink="viewCourses/{{ id }}"
+          >
+            <mat-icon>info</mat-icon>
+          </button>
+        </h2>
+        <p class="course-rating">${{ x.price }}</p>
+      </div>
+
+      @if(show){
+      <p class="course-summary">{{ x.description }}</p>
+      }
+
+      <div class="action-buttons-container">
+        <div>
+          <button
+            mat-icon-button
+            aria-label="Delete course"
+            color="warn"
+            (click)="deletecourse()"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            aria-label="Delete course"
+            color="primary"
+            (click)="editcourse()"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
   </mat-card>
+
   }
 </div>
+<!-- </div> -->
