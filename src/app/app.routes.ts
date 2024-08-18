@@ -7,18 +7,24 @@ import { UsersignupComponent } from './usersignup/usersignup.component';
 import { CoursesComponent } from './courses/courses.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { HomeComponent } from './home/home.component';
+import { UserhomeComponent } from './userhome/userhome.component';
+import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
 
 export const routes: Routes = [
   {
-    path: 'signuporlogin',
+    path: 'admin',
     component: HomeComponent,
   },
   {
-    path: 'signuporlogin/signup',
+    path: 'user',
+    component: UserhomeComponent,
+  },
+  {
+    path: 'admin/signup',
     component: SignupComponent,
   },
   {
-    path: 'signuporlogin/login',
+    path: 'admin/login',
     component: LoginComponent,
   },
   {
@@ -40,5 +46,9 @@ export const routes: Routes = [
   {
     path: 'viewCourses',
     component: CoursesComponent,
+  },
+  {
+    path: 'viewCourses/:id',
+    component: CoursedetailsComponent,
   },
 ];
