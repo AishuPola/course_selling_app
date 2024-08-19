@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
@@ -15,7 +15,8 @@ import { MatIconButton } from '@angular/material/button';
 export class CoursesComponent {
   courseData: any;
   id!: string;
-  constructor(private service: UserService) {}
+
+  constructor(private service: UserService, private router: Router) {}
   ngOnInit() {
     this.service.getCourses().then((res) => {
       this.courseData = res;
@@ -27,6 +28,9 @@ export class CoursesComponent {
   toggleSummary() {
     this.show = !this.show;
   }
+  // getdetails() {
+  //   this.router.navigate(['viewCourses/{{ id }}']);
+  // }
   deletecourse() {}
   editcourse() {}
 }
