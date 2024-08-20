@@ -1,6 +1,10 @@
 <div class="display">
+  @if(user){
+  <button (click)="logout()">LOG OUT</button>
+  } @else{
   <button routerLink="admin">ADMIN</button>
   <button routerLink="user">USER</button>
+  }
 </div>
 
 <router-outlet></router-outlet>

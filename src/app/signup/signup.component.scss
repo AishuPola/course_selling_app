@@ -1,8 +1,30 @@
+// .add-movie-form {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 0.5rem;
+  
+//     max-width: 400px;
+//     margin: 16px auto;
+//   }
+.container{
+  width:40%;
+  height:50%;
+  background-color: aliceblue;
+  margin:4em auto;
+  display:flex;
+  flex-direction:column;
+  padding:1em;
+  border-radius:50px;
+  box-shadow:0px 0px 10px;
+}
 .add-movie-form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-  
+
     max-width: 400px;
     margin: 16px auto;
   }
+.container a{
+  margin:0 auto
+}

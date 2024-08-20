@@ -36,9 +36,38 @@ export class AdminService {
       },
     }).then((res) => res.json());
   }
-  chechAuth() {
-    return fetch(`http://localhost:4000/admin/always`).then((res) =>
-      res.json()
-    );
+  checkAuth() {
+    return fetch(`http://localhost:4000/admin/always`, {
+      method: 'GET',
+      headers: {
+        'x-auth-token': localStorage.getItem('token') as string,
+      },
+    }).then((res) => res.json());
+  }
+  deleteCourse(id: any) {
+    return fetch(`http://localhost:4000/admin/course/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'x-auth-token': localStorage.getItem('token') as string,
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => res.json());
+  }
+  getCourse(id: any) {
+    return fetch(`http://localhost:4000/admin/course/${id}`, {
+      method: 'GET',
+      headers: {
+        'x-auth-token': localStorage.getItem('token') as string,
+      },
+    }).then((res) => res.json());
+  }
+  editCourse(value: any) {
+    return fetch(`http://localhost:4000/admin/course/${value[0].coursename}`, {
+      method: 'PUT',
+      body: JSON.stringify(value),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => res.json());
   }
 }

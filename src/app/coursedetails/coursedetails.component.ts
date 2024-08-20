@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CourseService } from '../course.service';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-coursedetails',
@@ -11,11 +12,13 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
   styleUrl: './coursedetails.component.scss',
 })
 export class CoursedetailsComponent {
-  course!: any;
   trustedUrl!: SafeUrl;
   isLoading: boolean = true;
   msg = '';
+  course: any;
+  id: any;
   constructor(
+    private service: AdminService,
     private courseService: CourseService,
     private route: ActivatedRoute, // DI
     private sanitizer: DomSanitizer
@@ -23,19 +26,10 @@ export class CoursedetailsComponent {
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id') as string; // From URL
 
-    this.courseService
-      .getCourseByIdP(id)
-      .then((data) => {
-        console.log(data);
-        this.course = data; // Model
-        this.isLoading = false;
-        this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-          this.course.video
-        );
-      })
-      .catch((err) => {
-        this.isLoading = false;
-        this.msg = err || 'Something went wrong 🥲';
-      });
+    this.id = this.route.snapshot.paramMap.get('id') as string; // From styleUrl
+    this.service.getCourse(this.id).then((res) => {
+      this.course = res;
+      console.log(this.course);
+    });
   }
 }

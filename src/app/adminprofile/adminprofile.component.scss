@@ -1,0 +1,25 @@
+.container{
+    height:100%;
+    width:100%;
+    display:flex;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+  }
+  .display-card{
+    margin:3em 7em;
+    height:90vh;
+    width:30vw;
+    padding:1em;
+    border-radius:50px;
+    box-shadow:0px 0px 10px;
+  }
+  
+  .display-card img{
+    object-fit: contain;
+  }
+  .heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  

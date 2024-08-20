@@ -9,7 +9,8 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Route, Router } from '@angular/router';
+import { Route, Router, RouterOutlet } from '@angular/router';
+import { setUser } from '../global';
 
 @Component({
   selector: 'app-signup',
@@ -19,6 +20,7 @@ import { Route, Router } from '@angular/router';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    RouterOutlet,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
@@ -41,10 +43,11 @@ export class SignupComponent {
   }
 
   signup() {
-    console.log(this.signupForm.value);
     this.adminService.signup(this.signupForm.value).then((data) => {
       localStorage.setItem('token', data.token);
-      this.router.navigate(['addcourses']);
+      setUser.userEmail = this.signupForm.value.Adminname;
+
+      this.router.navigate(['/adminprofile']);
     });
   }
 }

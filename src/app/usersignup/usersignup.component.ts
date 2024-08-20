@@ -8,8 +8,10 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Route, Router } from '@angular/router';
+import { Route, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { UserService } from '../user.service';
+import { AdminService } from '../admin.service';
+import { setUser } from '../global';
 
 @Component({
   selector: 'app-usersignup',
@@ -19,6 +21,8 @@ import { UserService } from '../user.service';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    RouterOutlet,
+    RouterLink,
   ],
   templateUrl: './usersignup.component.html',
   styleUrl: './usersignup.component.scss',
@@ -29,7 +33,8 @@ export class UsersignupComponent {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private adminService: AdminService
   ) {
     this.signupForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -44,6 +49,9 @@ export class UsersignupComponent {
   signup() {
     this.userService.signup(this.signupForm.value).then((data: any) => {
       localStorage.setItem('token', data.token);
+      this.adminService.checkAuth().then((res: any) => {
+        setUser.userEmail = res.username.id;
+      });
       this.router.navigate(['viewCourses']);
     });
   }

@@ -7,27 +7,33 @@
 </div> -->
 
 <form [formGroup]="signupForm" (ngSubmit)="signup()" class="add-movie-form">
-  <!-- <form class="add-movie-form"> -->
-  <mat-form-field>
-    <mat-label>username</mat-label>
-    <input matInput placeholder="Srujan" formControlName="username" />
+  <div class="container">
+    <form [formGroup]="signupForm" (ngSubmit)="signup()" class="add-movie-form">
+      <!-- <form class="add-movie-form"> -->
+      <mat-form-field>
+        <mat-label>username</mat-label>
+        <input matInput placeholder="Srujan" formControlName="username" />
 
-    @if(username?.touched && username?.hasError('required') ){
-    <mat-error>username is <strong>required</strong></mat-error>
-    } @if(username?.touched && username?.hasError('minlength') ){
-    <mat-error>Please provide full movie username 😁</mat-error>
-    }
-  </mat-form-field>
+        @if(username?.touched && username?.hasError('required') ){
+        <mat-error>username is <strong>required</strong></mat-error>
+        } @if(username?.touched && username?.hasError('minlength') ){
+        <mat-error>Please provide full movie username 😁</mat-error>
+        }
+      </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Password</mat-label>
-    <input
-      type="text"
-      matInput
-      placeholder="123467abc"
-      formControlName="password"
-    />
-  </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="123467abc"
+          formControlName="password"
+        />
+      </mat-form-field>
 
-  <button mat-raised-button type="submit">SIGNUP</button>
+      <button mat-raised-button type="submit">SIGNUP</button>
+    </form>
+    <a routerLink="/user">Already have an account?Login.</a>
+  </div>
+  <router-outlet></router-outlet>
 </form>
