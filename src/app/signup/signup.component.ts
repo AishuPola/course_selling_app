@@ -21,6 +21,7 @@ import { setUser } from '../global';
     MatFormFieldModule,
     MatInputModule,
     RouterOutlet,
+    RouterLink,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
