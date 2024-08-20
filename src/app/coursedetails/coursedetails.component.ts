@@ -24,8 +24,6 @@ export class CoursedetailsComponent {
     private sanitizer: DomSanitizer
   ) {}
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id') as string; // From URL
-
     this.id = this.route.snapshot.paramMap.get('id') as string; // From styleUrl
     this.service.getCourse(this.id).then((res) => {
       this.course = res;

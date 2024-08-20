@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
@@ -8,7 +8,14 @@ import { MatIconButton } from '@angular/material/button';
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [MatCardModule, RouterLink, MatIconModule, MatIconButton],
+  imports: [
+    MatCardModule,
+    RouterLink,
+    MatIconModule,
+    MatIconButton,
+    RouterOutlet,
+    RouterLink,
+  ],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss',
 })
@@ -28,9 +35,4 @@ export class CoursesComponent {
   toggleSummary() {
     this.show = !this.show;
   }
-  // getdetails() {
-  //   this.router.navigate(['viewCourses/{{ id }}']);
-  // }
-  deletecourse() {}
-  editcourse() {}
 }

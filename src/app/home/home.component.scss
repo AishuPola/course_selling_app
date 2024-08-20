@@ -1,44 +1,24 @@
-// .container{
-//     height:50vh;
-// width:50vh;
-// background-color: aliceblue;
-// margin:10em auto;
-// display:flex;
-// flex-direction:column;
-// }
-/* Container styling */
-.container {
+
+.container{
+    width:40%;
+    height:50%;
+    background-color: aliceblue;
+    margin:4em auto;
+    display:flex;
+    flex-direction:column;
+    padding:1em;
+    border-radius:50px;
+    box-shadow:0px 0px 10px;
+  }
+  .add-movie-form {
     display: flex;
-    justify-content: center; /* Centers the buttons horizontally */
-    align-items: center; /* Centers the buttons vertically */
-    height: 100vh; /* Makes the container take the full viewport height */
-    background-color: #f5f5f5; /* Light gray background */
-}
-
-/* Button styling */
-button[mat-flat-button] {
-    margin: 0 10px; /* Adds spacing between the buttons */
-    padding: 12px 24px; /* Adds padding inside the buttons */
-    font-size: 16px; /* Slightly larger font for better readability */
-    font-weight: bold; /* Makes the text bold */
-    color: white; /* White text color */
-    background-color: #1976d2; /* Primary color for buttons */
-    border-radius: 4px; /* Rounded corners */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover transition */
-}
-
-button[mat-flat-button]:hover {
-    background-color: #1565c0; /* Darker shade on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
-}
-
-button[mat-flat-button]:active {
-    background-color: #0d47a1; /* Even darker shade when active */
-    transform: translateY(0); /* Reset lift when clicked */
-}
-
-button[mat-flat-button]:focus {
-    outline: none; /* Removes default outline */
-    box-shadow: 0px 0px 0px 3px rgba(25, 118, 210, 0.4); /* Focus ring for accessibility */
-}
+    flex-direction: column;
+    gap: 0.5rem;
+  
+    max-width: 400px;
+    margin: 16px auto;
+  }
+  .container a{
+    margin:0 auto
+  }
+  

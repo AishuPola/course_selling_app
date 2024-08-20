@@ -9,7 +9,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Route, Router, RouterOutlet } from '@angular/router';
+import { RouterLink, Router, RouterOutlet } from '@angular/router';
 import { setUser } from '../global';
 
 @Component({

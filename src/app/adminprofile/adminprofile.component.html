@@ -2,24 +2,22 @@
 <button (click)="addcourses()">ADD COURSES</button>
 <!-- <p>adminprofile works!</p> -->
 
-<button (click)="addcourses()">ADD COURSES</button>
 <div class="container">
   @for(x of courseData;track x){
-  <div class="display-card" >
+  <div class="display-card">
     @if(x.select){
-    <input type='text' placeholder="imageUrl" [(ngModel)]="image">
-    <input type='text' placeholder="Description" [(ngModel)]="description">
-    <input type='text' placeholder="Price" [(ngModel)]="price">
+    <input type="text" placeholder="imageUrl" [(ngModel)]="image" />
+    <input type="text" placeholder="Description" [(ngModel)]="description" />
+    <input type="text" placeholder="Price" [(ngModel)]="price" />
     <div>
-    <button (click)="submitEdit()">Edit</button>
-    <button (click)="cancelEdit()">Cancel</button>
-</div>
-    }
-    @else{
+      <button (click)="submitEdit()">Edit</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </div>
+    } @else{
 
-    <img src={{x.imageurl}} height="60%" width="100%">
+    <img src="{{ x.imageurl }}" height="60%" width="100%" />
     <div class="heading">
-      <h2>{{x.coursename}}</h2>
+      <h2>{{ x.coursename }}</h2>
       <div>
         <button
           mat-icon-button
@@ -39,10 +37,9 @@
         </button>
       </div>
     </div>
-    <div>{{x.description}}</div>
-    <div>${{x.price}}</div>
+    <div>{{ x.description }}</div>
+    <div>${{ x.price }}</div>
     }
   </div>
   }
 </div>
-

@@ -48,10 +48,11 @@
           <button
             mat-icon-button
             aria-label="Details of course"
-            routerLink="viewCourses/{{ id }}"
+            routerLink="/viewCourses/{{ x.coursename }}"
           >
             <mat-icon>info</mat-icon>
           </button>
+          <router-outlet></router-outlet>
         </h2>
         <p class="course-rating">${{ x.price }}</p>
       </div>
@@ -61,24 +62,7 @@
       }
 
       <div class="action-buttons-container">
-        <div>
-          <button
-            mat-icon-button
-            aria-label="Delete course"
-            color="warn"
-            (click)="deletecourse()"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            aria-label="Delete course"
-            color="primary"
-            (click)="editcourse()"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-        </div>
+        <div></div>
       </div>
     </mat-card-content>
   </mat-card>
