@@ -52,8 +52,6 @@ export class SignupComponent {
     if (this.password === this.signupForm.value.password) {
       this.adminService.signup(this.signupForm.value).then((data) => {
         localStorage.setItem('token', data.token);
-        setUser.userEmail = this.signupForm.value.Adminname;
-
         this.router.navigate(['/adminprofile']);
       });
     } else {

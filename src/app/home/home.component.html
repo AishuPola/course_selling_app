@@ -3,7 +3,7 @@
     <!-- <form class="add-movie-form"> -->
     <mat-form-field>
       <mat-label>Adminname</mat-label>
-      <input matInput placeholder="Srujan" formControlName="Adminname" />
+      <input matInput placeholder="Srujan" formControlName="username" />
 
       @if(Adminname?.touched && Adminname?.hasError('required') ){
       <mat-error>Adminname is <strong>required</strong></mat-error>

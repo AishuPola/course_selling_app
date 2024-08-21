@@ -20,27 +20,25 @@ export class AppComponent {
     private router: Router,
     private userService: UserService
   ) {}
-  ngOnInit() {
-    this.checkAuth();
-  }
+
   ngOnDestroy(): void {
     this.clearInterval();
   }
 
   checkAuth() {
-    this.service.checkAuth().then((res: any) => {
-      setUser.userEmail = res.username.id;
-      this.user = setUser.userEmail;
-    });
-    this.startInterval();
+    // this.service.checkAuth().then((res: any) => {
+    //   setUser.userEmail = res.username.id;
+    //   this.user = setUser.userEmail;
+    // });
+    // this.startInterval();
   }
   startInterval(): void {
-    this.intervalId = setInterval(() => {
-      this.service.checkAuth().then((res: any) => {
-        setUser.userEmail = res.username.id;
-        this.user = setUser.userEmail;
-      });
-    }, 5000); // Interval time in milliseconds
+    // this.intervalId = setInterval(() => {
+    //   this.service.checkAuth().then((res: any) => {
+    //     setUser.userEmail = res.username.id;
+    //     this.user = setUser.userEmail;
+    //   });
+    // }, 5000); // Interval time in milliseconds
   }
   logout() {
     localStorage.setItem('token', '');

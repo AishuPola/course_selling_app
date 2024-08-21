@@ -10,7 +10,7 @@
     <!-- <form class="add-movie-form"> -->
     <mat-form-field>
       <mat-label>username</mat-label>
-      <input matInput placeholder="Srujan" formControlName="username" />
+      <input matInput placeholder="John" formControlName="username" />
 
       @if(username?.touched && username?.hasError('required') ){
       <mat-error>username is <strong>required</strong></mat-error>
@@ -34,12 +34,12 @@
         type="text"
         matInput
         placeholder="123467abc"
-        [(ngModel)]="password"
+        formControlName="password"
       />
     </mat-form-field>
-    @if(warning){
+    <!-- @if(warning){
     <div class="warning">Please match the password</div>
-    }
+    } -->
 
     <button mat-raised-button type="submit">SIGNUP</button>
   </form>

@@ -7,17 +7,12 @@ import { UsersignupComponent } from './usersignup/usersignup.component';
 import { CoursesComponent } from './courses/courses.component';
 
 import { HomeComponent } from './home/home.component';
-import { UserhomeComponent } from './userhome/userhome.component';
 import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
 
 export const routes: Routes = [
   {
-    path: 'admin',
+    path: 'home',
     component: HomeComponent,
-  },
-  {
-    path: 'user',
-    component: UserhomeComponent,
   },
   {
     path: 'admin/signup',

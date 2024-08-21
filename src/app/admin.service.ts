@@ -9,7 +9,7 @@ export interface User {
 export class AdminService {
   constructor() {}
   signup(credentials: User): Promise<any> {
-    return fetch(`http://localhost:4000/admin/signup`, {
+    return fetch(`http://localhost:4000/user/signup`, {
       method: 'POST',
       body: JSON.stringify(credentials),
       headers: {
@@ -18,7 +18,7 @@ export class AdminService {
     }).then((res) => res.json());
   }
   login(credentials: User): Promise<any> {
-    return fetch(`http://localhost:4000/admin/login`, {
+    return fetch(`http://localhost:4000/user/login`, {
       method: 'POST',
       body: JSON.stringify(credentials),
       headers: {
@@ -65,7 +65,7 @@ export class AdminService {
     console.log(value[0]);
     return fetch(`http://localhost:4000/admin/course/${value[0].coursename}`, {
       method: 'PUT',
-      body: JSON.stringify(value),
+      body: JSON.stringify(value[0]),
       headers: {
         'x-auth-token': localStorage.getItem('token') as string,
         'Content-Type': 'application/json',

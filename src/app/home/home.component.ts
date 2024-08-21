@@ -35,7 +35,7 @@ export class HomeComponent {
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      Adminname: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
       password: '',
     });
   }
@@ -50,7 +50,8 @@ export class HomeComponent {
       console.log(data);
       if (data.token) {
         localStorage.setItem('token', data.token);
-        setUser.userEmail = this.loginForm.value;
+        localStorage.setItem('username', this.loginForm.value.username);
+        localStorage.setItem('roleId', data.roleId);
         this.router.navigate(['/adminprofile']);
       } else {
         this.warning = true;
