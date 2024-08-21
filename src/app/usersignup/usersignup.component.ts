@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -23,12 +24,15 @@ import { setUser } from '../global';
     MatInputModule,
     RouterOutlet,
     RouterLink,
+    FormsModule,
   ],
   templateUrl: './usersignup.component.html',
   styleUrl: './usersignup.component.scss',
 })
 export class UsersignupComponent {
   signupForm!: FormGroup;
+  password: string = '';
+  warning: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -47,12 +51,16 @@ export class UsersignupComponent {
   }
 
   signup() {
-    this.userService.signup(this.signupForm.value).then((data: any) => {
-      localStorage.setItem('token', data.token);
-      this.adminService.checkAuth().then((res: any) => {
-        setUser.userEmail = res.username.id;
+    if (this.password === this.signupForm.value.password) {
+      this.userService.signup(this.signupForm.value).then((data: any) => {
+        localStorage.setItem('token', data.token);
+        this.adminService.checkAuth().then((res: any) => {
+          setUser.userEmail = res.username.id;
+        });
+        this.router.navigate(['viewCourses']);
       });
-      this.router.navigate(['viewCourses']);
-    });
+    } else {
+      this.warning = true;
+    }
   }
 }

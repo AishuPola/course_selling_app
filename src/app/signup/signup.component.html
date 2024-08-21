@@ -28,6 +28,18 @@
         formControlName="password"
       />
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Re-Enter Password</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="123467abc"
+        [(ngModel)]="password"
+      />
+    </mat-form-field>
+    @if(warning){
+    <div class="warning">Please match the password</div>
+    }
 
     <button mat-raised-button type="submit">SIGNUP</button>
   </form>

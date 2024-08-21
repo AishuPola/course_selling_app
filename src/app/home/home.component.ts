@@ -27,6 +27,7 @@ import { setUser } from '../global';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  warning: boolean = false;
   loginForm!: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -46,10 +47,13 @@ export class HomeComponent {
   login() {
     console.log(this.loginForm.value);
     this.adminService.login(this.loginForm.value).then((data) => {
-      if (data) {
+      console.log(data);
+      if (data.token) {
         localStorage.setItem('token', data.token);
         setUser.userEmail = this.loginForm.value;
         this.router.navigate(['/adminprofile']);
+      } else {
+        this.warning = true;
       }
     });
   }

@@ -27,6 +27,7 @@ import { setUser } from '../global';
   styleUrl: './userhome.component.scss',
 })
 export class UserhomeComponent {
+  warning: boolean = false;
   loginForm!: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -46,11 +47,15 @@ export class UserhomeComponent {
   login() {
     console.log(this.loginForm.value);
     this.adminService.login(this.loginForm.value).then((data) => {
-      localStorage.setItem('token', data.token);
-      this.adminService.checkAuth().then((res: any) => {
-        setUser.userEmail = res.username.id;
-      });
-      this.router.navigate(['/viewCourses']);
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        this.adminService.checkAuth().then((res: any) => {
+          setUser.userEmail = res.username.id;
+        });
+        this.router.navigate(['/viewCourses']);
+      } else {
+        this.warning = true;
+      }
     });
   }
 }

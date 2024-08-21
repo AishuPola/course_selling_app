@@ -62,10 +62,12 @@ export class AdminService {
     }).then((res) => res.json());
   }
   editCourse(value: any) {
+    console.log(value[0]);
     return fetch(`http://localhost:4000/admin/course/${value[0].coursename}`, {
       method: 'PUT',
       body: JSON.stringify(value),
       headers: {
+        'x-auth-token': localStorage.getItem('token') as string,
         'Content-Type': 'application/json',
       },
     }).then((res) => res.json());

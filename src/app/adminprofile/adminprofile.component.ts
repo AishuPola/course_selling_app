@@ -20,6 +20,10 @@ export class AdminprofileComponent {
   coursename: string = '';
   description: string = '';
   price: string = '';
+  search: any;
+  filteredData: any;
+  delete: string = '';
+
   constructor(
     private router: Router,
     private adminService: AdminService,
@@ -32,18 +36,45 @@ export class AdminprofileComponent {
           (resk: any) => resk.username === resp.username.id
         );
         this.courseData.map((resk: any) => (resk.select = false));
+        this.filteredData = this.courseData;
         console.log(this.courseData);
       });
     });
   }
+  searchCourse() {
+    this.adminService.checkAuth().then((resp: any) => {
+      this.service.getCourses().then((res) => {
+        this.courseData = res.filter(
+          (resk: any) => resk.username === resp.username.id
+        );
+        this.courseData.map((resk: any) => (resk.select = false));
+        if (this.search) {
+          this.filteredData = this.courseData.filter(
+            (resk: any) =>
+              resk.coursename.toLowerCase() === this.search.toLowerCase()
+          );
+        } else {
+          this.filteredData = this.courseData;
+        }
+      });
+    });
+  }
+  noAction() {
+    this.delete = '';
+  }
 
-  deleteCourse(value: any) {
-    this.adminService.deleteCourse(value).then((res: any) => {
+  deletedCourse(value: any) {
+    this.delete = value;
+  }
+
+  deleteCourse() {
+    this.adminService.deleteCourse(this.delete).then((res: any) => {
       this.adminService.checkAuth().then((resp: any) => {
         this.service.getCourses().then((res) => {
           this.courseData = res.filter(
             (resk: any) => resk.username === resp.username.id
           );
+          this.delete = '';
           console.log(this.courseData);
         });
       });
@@ -63,13 +94,24 @@ export class AdminprofileComponent {
   submitEdit() {
     let body = [
       {
-        imageurl: this.image,
         coursename: this.coursename,
-        description: this.description,
+        username: this.courseData[0].username,
         price: this.price,
+        description: this.description,
+        imageurl: this.image,
       },
     ];
-    this.adminService.editCourse(body).then((res) => console.log(res));
+    this.adminService.editCourse(body).then((res) => {
+      this.adminService.checkAuth().then((resp: any) => {
+        this.service.getCourses().then((response) => {
+          this.courseData = response.filter(
+            (resk: any) => resk.username === resp.username.id
+          );
+          this.courseData.map((resk: any) => (resk.select = false));
+          this.filteredData = this.courseData;
+        });
+      });
+    });
   }
   cancelEdit() {
     this.courseData.map((res: any) => (res.select = false));

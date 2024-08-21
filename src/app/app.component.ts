@@ -13,6 +13,7 @@ import { UserService } from './user.service';
 })
 export class AppComponent {
   user: any;
+  private intervalId: any;
 
   constructor(
     private service: AdminService,
@@ -22,23 +23,35 @@ export class AppComponent {
   ngOnInit() {
     this.checkAuth();
   }
+  ngOnDestroy(): void {
+    this.clearInterval();
+  }
 
   checkAuth() {
     this.service.checkAuth().then((res: any) => {
       setUser.userEmail = res.username.id;
       this.user = setUser.userEmail;
     });
-    setInterval(() => {
+    this.startInterval();
+  }
+  startInterval(): void {
+    this.intervalId = setInterval(() => {
       this.service.checkAuth().then((res: any) => {
         setUser.userEmail = res.username.id;
         this.user = setUser.userEmail;
       });
-    }, 1000);
+    }, 5000); // Interval time in milliseconds
   }
   logout() {
     localStorage.setItem('token', '');
     setUser.userEmail = null;
     this.user = setUser.userEmail;
     this.router.navigate(['/']);
+  }
+  clearInterval(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 }

@@ -3,6 +3,7 @@ import { AdminService } from '../admin.service';
 import {
   FormBuilder,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -22,12 +23,15 @@ import { setUser } from '../global';
     MatInputModule,
     RouterOutlet,
     RouterLink,
+    FormsModule,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })
 export class SignupComponent {
   signupForm!: FormGroup;
+  password: string = '';
+  warning: boolean = false;
   constructor(
     private fb: FormBuilder,
     private adminService: AdminService,
@@ -37,6 +41,7 @@ export class SignupComponent {
       Adminname: ['', [Validators.required, Validators.minLength(3)]],
       password: '',
     });
+    console.log(this.signupForm.value);
   }
 
   get Adminname() {
@@ -44,11 +49,15 @@ export class SignupComponent {
   }
 
   signup() {
-    this.adminService.signup(this.signupForm.value).then((data) => {
-      localStorage.setItem('token', data.token);
-      setUser.userEmail = this.signupForm.value.Adminname;
+    if (this.password === this.signupForm.value.password) {
+      this.adminService.signup(this.signupForm.value).then((data) => {
+        localStorage.setItem('token', data.token);
+        setUser.userEmail = this.signupForm.value.Adminname;
 
-      this.router.navigate(['/adminprofile']);
-    });
+        this.router.navigate(['/adminprofile']);
+      });
+    } else {
+      this.warning = true;
+    }
   }
 }

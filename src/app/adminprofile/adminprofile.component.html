@@ -1,9 +1,25 @@
 <!-- <p>adminprofile works!</p> -->
-<button (click)="addcourses()">ADD COURSES</button>
-<!-- <p>adminprofile works!</p> -->
+@if(delete){
+<div class="popup">
+  <div class="dialouge">
+    <div class="middle">
+      <div>Are you sure that you want to delete this course?</div>
+    </div>
+    <div class="middle">
+      <button (click)="deleteCourse()">Yes</button>
+      <button (click)="noAction()">No</button>
+    </div>
+  </div>
+</div>
+}
 
+<div class="top-div">
+  <input placeholder="Enter Course Name.." [(ngModel)]="search" />
+  <button (click)="searchCourse()">Search</button>
+  <button (click)="addcourses()">ADD COURSES</button>
+</div>
 <div class="container">
-  @for(x of courseData;track x){
+  @for(x of filteredData;track x){
   <div class="display-card">
     @if(x.select){
     <input type="text" placeholder="imageUrl" [(ngModel)]="image" />
@@ -23,7 +39,7 @@
           mat-icon-button
           aria-label="Delete course"
           color="warn"
-          (click)="deleteCourse(x.coursename)"
+          (click)="deletedCourse(x.coursename)"
         >
           <mat-icon>delete</mat-icon>
         </button>
